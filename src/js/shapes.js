@@ -31,11 +31,24 @@ svg.selectAll("ellipse")
         .attr("rx", (d) => d * 3)
         .attr("ry", "30");
         
-let line = 900;
+let linePos = 900;
 svg.selectAll("line")
     .data(dataArray)
     .enter().append("line")
-        .attr("x1", line)
+        .attr("x1", linePos)
         .attr("y1", (d, i) => 80 + (i * 20))
-        .attr("x2", (d) =>  line + (d * 15))
+        .attr("x2", (d) =>  linePos + (d * 15))
         .attr("y2", (d, i) => 80 + (i * 20));
+
+let textArray = ["start", "middle", "end"];
+svg.append("text").selectAll("tspan")
+    .data(textArray)
+    .enter().append("tspan")
+        .attr("x", linePos)
+        .attr("y", (d, i) => 150 + (i * 30))
+        .attr("font-size", "30")
+        .attr("fill","none")
+        .attr("stroke","blue")
+        .attr("stroke-width","2")
+        .attr("text-anchor","start")
+        .text((d) => d);
