@@ -1,6 +1,8 @@
 let dataArray = [5, 11, 18];
 
-let svg = d3.select("body").append("svg").attr("height","100%").attr("width","100%");
+let deviceWidthLessPadding = `${window.screen.width - 20}px`;
+
+let svg = d3.select("body").append("svg").attr("height","100%").attr("width", deviceWidthLessPadding);
 
 svg.selectAll("rect")
     .data(dataArray)
@@ -29,3 +31,11 @@ svg.selectAll("ellipse")
         .attr("rx", (d) => d * 3)
         .attr("ry", "30");
         
+let line = 900;
+svg.selectAll("line")
+    .data(dataArray)
+    .enter().append("line")
+        .attr("x1", line)
+        .attr("y1", (d, i) => 80 + (i * 20))
+        .attr("x2", (d) =>  line + (d * 15))
+        .attr("y2", (d, i) => 80 + (i * 20));
