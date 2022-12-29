@@ -21,3 +21,9 @@ line {
     stroke: red;
     stroke-width: 2px;
 }
+
+g.grp0 path,
+g.grp0 circle {
+    stroke: red;
+    fill: none;
+}
